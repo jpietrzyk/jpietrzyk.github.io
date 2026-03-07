@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Button } from "@/components/ui/button";
+
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Resume", href: "#resume" },
+  { label: "Notes", href: "#notes" },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-6 py-12">
+      <header className="sticky top-0 z-10 mb-10 flex flex-wrap items-center justify-between gap-3 border-b bg-background/95 pb-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <p className="text-sm font-medium">jpietrzyk</p>
+        <nav aria-label="Main" className="flex flex-wrap gap-1">
+          {navItems.map((item) => (
+            <Button key={item.href} variant="ghost" size="sm" asChild>
+              <a href={item.href}>{item.label}</a>
+            </Button>
+          ))}
+        </nav>
+      </header>
+
+      <section id="about" className="space-y-4">
+        <p className="text-sm text-muted-foreground">jpietrzyk</p>
+        <h1 className="text-4xl font-semibold tracking-tight">Personal page</h1>
+        <p className="max-w-2xl text-base text-muted-foreground">
+          A simple place for my profile, work history, and notes.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+        <div className="flex flex-wrap gap-3 pt-2">
+          <Button asChild>
+            <a
+              href="https://github.com/jpietrzyk"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      <section
+        id="projects"
+        className="mt-6 space-y-2 rounded-lg border bg-card p-6"
+      >
+        <h2 className="text-xl font-medium">Projects</h2>
+        <p className="text-sm text-muted-foreground">
+          Placeholder section for featured projects and selected links.
+        </p>
+      </section>
+
+      <section
+        id="resume"
+        className="mt-12 space-y-2 rounded-lg border bg-card p-6"
+      >
+        <h2 className="text-xl font-medium">Resume</h2>
+        <p className="text-sm text-muted-foreground">
+          Placeholder section for experience, skills, and downloadable CV.
+        </p>
+      </section>
+
+      <section
+        id="notes"
+        className="mt-6 space-y-2 rounded-lg border bg-card p-6"
+      >
+        <h2 className="text-xl font-medium">Notes / Blog</h2>
+        <p className="text-sm text-muted-foreground">
+          Placeholder section for technical notes and short blog posts.
+        </p>
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;
