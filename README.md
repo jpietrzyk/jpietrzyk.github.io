@@ -21,3 +21,9 @@ In `github-pages` mode, Vite base path is set automatically:
 
 - User repo (`<user>.github.io`) -> `/`
 - Project repo (`<repo>`) -> `/<repo>/`
+
+## GitHub Pages deploy
+
+This repo includes workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), which builds and deploys `dist` on each push to `main`.
+
+In repository settings, set **Pages** -> **Build and deployment** -> **Source** to **GitHub Actions**.
