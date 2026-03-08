@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import BackToHomeLink from "@/components/back-to-home-link";
 import type { ReactNode } from "react";
 
-type NavPage = "home" | "about" | "projects" | "resume" | "notes";
+type NavPage = "home" | "about" | "projects" | "resume" | "notes" | "contact";
 
 type SiteLayoutProps = {
   children: ReactNode;
@@ -16,6 +15,18 @@ const navItems = [
   { key: "resume", label: "Resume", href: "resume.html" },
   { key: "notes", label: "Notes", href: "notes.html" },
 ];
+
+const getPageLabel = (page: NavPage) => {
+  if (page === "home") {
+    return "Home";
+  }
+
+  if (page === "contact") {
+    return "Contact";
+  }
+
+  return navItems.find((item) => item.key === page)?.label ?? "Page";
+};
 
 export function SiteLayout({ children, currentPage }: SiteLayoutProps) {
   return (
@@ -41,7 +52,14 @@ export function SiteLayout({ children, currentPage }: SiteLayoutProps) {
         </nav>
       </header>
 
-      {currentPage !== "home" ? <BackToHomeLink /> : null}
+      {currentPage !== "home" ? (
+        <p className="mb-4 text-sm text-muted-foreground">
+          <a className="underline" href="index.html">
+            Home
+          </a>{" "}
+          <span aria-hidden="true">→</span> {getPageLabel(currentPage)}
+        </p>
+      ) : null}
 
       {children}
     </main>

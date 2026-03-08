@@ -2,7 +2,7 @@ import { SiteLayout } from "@/components/site-layout";
 
 function ContactPage() {
   return (
-    <SiteLayout currentPage="home">
+    <SiteLayout currentPage="contact">
       <section className="space-y-4 rounded-lg border bg-card p-6">
         <h1 className="text-2xl font-semibold tracking-tight">Contact</h1>
         <p className="text-sm text-muted-foreground">
