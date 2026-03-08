@@ -41,6 +41,13 @@ jobs:
       - name: Build for GitHub Pages
         run: pnpm run build:pages
 
+      - name: Validate built HTML references compiled assets
+        run: |
+          if grep -R --include='*.html' -nE '(src|href)="/src/' dist; then
+            echo "::error::Build output contains /src references in HTML."
+            exit 1
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
