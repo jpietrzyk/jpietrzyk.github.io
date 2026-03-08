@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import BackToHomeLink from "@/components/back-to-home-link";
 import type { ReactNode } from "react";
 
 type NavPage = "home" | "about" | "projects" | "resume" | "notes";
@@ -39,6 +40,8 @@ export function SiteLayout({ children, currentPage }: SiteLayoutProps) {
           ))}
         </nav>
       </header>
+
+      {currentPage !== "home" ? <BackToHomeLink /> : null}
 
       {children}
     </main>

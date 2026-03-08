@@ -4,11 +4,6 @@ function ResumePage() {
   return (
     <SiteLayout currentPage="resume">
       <section id="resume" className="space-y-6 rounded-lg border bg-card p-6">
-        <p className="text-sm">
-          <a className="underline text-muted-foreground" href="index.html">
-            ← Back to home
-          </a>
-        </p>
         <h1 className="text-2xl font-semibold tracking-tight">Resume</h1>
 
         <div className="space-y-4">
